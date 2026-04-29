@@ -1,20 +1,44 @@
-package com.srm.java;
+package com.srm.java1;
+import java.util.Random;
+public class TicToe2 {
+	    static boolean isHumanTurn;
+	    static char humanSymbol;
+	    static char computerSymbol;
 
-public class tictoe3 {
-	public static void main(String[] args) {
-	        int slot = 7;
-
-	        System.out.println("Row: " + getRowFromSlot(slot));
-	        System.out.println("Column: " + getColFromSlot(slot));
+	    public static void main(String[] args) {
+	        tossAndAssignSymbols();
+	        displayTossResult();
 	    }
 
-	    // Converts slot number into row index (0–2)
-	    static int getRowFromSlot(int slot) {
-	        return (slot - 1) / 3;
+	    // Performs random toss and assigns symbols
+	    static void tossAndAssignSymbols() {
+	        Random random = new Random();
+	        int toss = random.nextInt(2); // 0 or 1
+
+	        if (toss == 0) {
+	            isHumanTurn = true;
+	            humanSymbol = 'X';
+	            computerSymbol = 'O';
+	        } else {
+	            isHumanTurn = false;
+	            humanSymbol = 'O';
+	            computerSymbol = 'X';
+	        }
 	    }
 
-	    // Converts slot number into column index (0–2)
-	    static int getColFromSlot(int slot) {
-	        return (slot - 1) % 3;
+	    // Displays result
+	    static void displayTossResult() {
+	        System.out.println("Toss Result: " + (isHumanTurn ? 0 : 1));
+
+	        if (isHumanTurn) {
+	            System.out.println("First Player: Human");
+	        } else {
+	            System.out.println("First Player: Computer");
+	        }
+
+	        System.out.println("Human Symbol: " + humanSymbol);
+	        System.out.println("Computer Symbol: " + computerSymbol);
 	    }
 	}
+
+
